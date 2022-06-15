@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<head> 
+    <title>Chess!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        </style>
+</head>
+<body>
+    <form action="/newPawn" method="post" enctype="application/x-www-form-urlencoded">
+        <label>channge pawn to:[Q,R,K,B]</label>
+        <input type="text"  id="newPawn" name="newPawn"/><br><br>
+        <input type="hidden" id="gameId" name="gameId" th:text="${gameId}">
+        <input type="submit" value="Submit" />
+    </form>
+    <p th:text="${answer}"></p>
+</body>
+</html>
+
+<!--
+    <form action="#" th:action="@{/chess}" th:object="${move}"  method="post">
+        <label for="fmove">your move:</label>
+        <input type="text"  th:field="*{content}" /><br><br>
+        <input type="submit" value="Submit" />
+    </form>
+-->
