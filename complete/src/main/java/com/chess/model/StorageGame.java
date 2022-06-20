@@ -31,6 +31,7 @@ public class StorageGame {
         return end;
     }
     public void setEnd(Boolean end){this.end=end;}
+    
     private Boolean win = false;
     public boolean getWin(){
         return win;

@@ -36,6 +36,7 @@ public class StorageMove {
 
     public StorageMove(){}
 
+    public long getId(){ return id; }
     public int getSourceX(){ return sourceX; }
     public int getSourceY(){ return sourceY; }
     public int getTargetX(){ return targetX; }
