@@ -11,7 +11,6 @@ import com.chess.model.*;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.mongodb.client.result.InsertManyResult;
 
 @Service
 public class DataService {
@@ -85,11 +84,6 @@ public class DataService {
             docMoves.add(move);
         }
         ms.getMoveCollection().insertMany(docMoves);
-        //InsertManyResult result = ms.getMoveCollection().insertMany(docMoves);
-        // List<long> insertedIds = new ArrayList<>();
-        // result.getInsertedIds().values()
-        //     .forEach(doc -> insertedIds.add(doc.asObjectId().getValue()));
-        // System.out.println("Inserted documents with the following ids: " + insertedIds);
 
         List<StorageGame> games = (List<StorageGame>) gr.findAll();
         List<Document> docGames = new ArrayList<Document>();
@@ -103,11 +97,5 @@ public class DataService {
             docGames.add(game);
         }
         ms.getGameCollection().insertMany(docGames);
-
-        // List<StorageGame> games = (List<StorageGame>) gr.findAll();
-		// //List<StorageMove> moves = mr.findByGameIdOrderByIndex(gameId);
-        // ms.getGameCollection().insertMany(clientSession, documents);
-
     }
-
 }
