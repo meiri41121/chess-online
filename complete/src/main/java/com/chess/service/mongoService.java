@@ -54,7 +54,6 @@ public class mongoService {
                 } catch (MongoException me) {
                     System.err.println("An error occurred while attempting to run a command: " + me);
         }
-        //database.createCollection("exampleCollection");
         boolean collectionExists = database.listCollectionNames()
         .into(new ArrayList<String>()).contains("exampleCollection");
         if(collectionExists) database.getCollection("exampleCollection").drop();
@@ -68,14 +67,14 @@ public class mongoService {
         moveCollection = database.getCollection("Moves");
 
         //csvToMongoFull("/Users/meiri/Documents/csvToMongo.csv","name");
-        Vector<Boolean> need = new Vector<Boolean>();
-        need.add(true);need.add(true);need.add(false);need.add(true);
-        Vector<Vector<String>> change = new Vector<Vector<String>>();
-        Vector<String> v = new Vector<String>();v.add("mail");v.add("gmail");
-        change.add(v);
-        v = new Vector<String>();v.add("_id");v.add("inde");
-        change.add(v);
-        sqlToMongo("/Users/meiri/Documents/csvToMongo.csv","name",need,change);
+        // Vector<Boolean> need = new Vector<Boolean>();
+        // need.add(true);need.add(true);need.add(false);need.add(true);
+        // Vector<Vector<String>> change = new Vector<Vector<String>>();
+        // Vector<String> v = new Vector<String>();v.add("mail");v.add("gmail");
+        // change.add(v);
+        // v = new Vector<String>();v.add("_id");v.add("inde");
+        // change.add(v);
+        // sqlToMongo("/Users/meiri/Documents/csvToMongo.csv","name",need,change);
     }
     
     MongoCollection<Document> getMoveCollection(){return moveCollection;}
@@ -151,7 +150,6 @@ public class mongoService {
             File file=new File(csvurl);    //creates a new file instance  
             FileReader fr=new FileReader(file);   //reads the file  
             BufferedReader br=new BufferedReader(fr);  //creates a buffering character input stream  
-            StringBuffer sb=new StringBuffer();    //constructs a string buffer with no characters  
             String line = br.readLine();
             int column_count = line.length() - line.replaceAll(",","").length() + 1;
             int block = blockk.length>0? blockk[0] : 1000;
@@ -178,6 +176,6 @@ public class mongoService {
         catch(IOException e){  
             e.printStackTrace();  
         }  
-    }
+    } 
 
 }
