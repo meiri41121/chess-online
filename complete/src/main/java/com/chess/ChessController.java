@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ChessController {
-
+	
 	@Autowired
 	private ChessService cs;
 
