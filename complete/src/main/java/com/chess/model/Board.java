@@ -2,8 +2,6 @@ package com.chess.model;
 
 import java.util.Arrays;
 import java.util.StringJoiner;
-//import netscape.javascript.JSObject;
-
 
 /**
  * board
@@ -46,23 +44,5 @@ public class Board {
             sj.add(Arrays.toString(row));
         }   
         return sj.toString();
-        //return Arrays.deepToString(b);
     }
-    
-    // public JSObject toSObject() {
-    //     JSObject jo = new JSObject();
-    //     for(int i=0;i<8;i++)
-    //         ((Object) jo).put(String.valueOf(i), b[i]);
-    //     System.out.println(jo.toString());
-    //     return jo;   
-    // }
-   
-
-//     @Override
-//   public String toString() {
-//     return String.format(
-//         "Customer[id=%d, firstName='%s', lastName='%s']",
-//         id, firstName, lastName);
-//   }
-
 }
