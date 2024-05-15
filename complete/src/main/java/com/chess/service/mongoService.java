@@ -34,13 +34,13 @@ import com.mongodb.client.MongoDatabase;
  * mongoService
  */
 @Service
-public class mongoService {
+public class MongoService {
 
     private MongoDatabase database;
     private MongoCollection<Document> gameCollection;
     private MongoCollection<Document> moveCollection;
 
-    mongoService(){
+    MongoService(){
         ConnectionString connectionString = new ConnectionString("mongodb+srv://meiri:12342332@cluster0.u4esz.mongodb.net/?retryWrites=true&w=majority");
         MongoClientSettings settings = MongoClientSettings.builder()
         .applyConnectionString(connectionString)

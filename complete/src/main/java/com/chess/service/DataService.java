@@ -22,7 +22,7 @@ public class DataService {
 	private MoveRepository mr;
 
     @Autowired
-    private mongoService ms;
+    private MongoService ms;
 
     public long addNewGame(String name, int difficulty, Game game){
         convertToMongo();
@@ -74,7 +74,7 @@ public class DataService {
         List<Document> docMoves = new ArrayList<Document>();
         for(StorageMove s:moves){
             Document move = new Document("_id", s.getId());
-            move.append("inde", s.getIndex());
+            move.append("index", s.getIndex());
             move.append("sourceX", s.getSourceX());
             move.append("sourceY", s.getSourceY());
             move.append("targetX", s.getTargetX());
