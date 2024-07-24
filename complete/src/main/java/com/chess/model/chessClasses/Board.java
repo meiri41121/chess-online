@@ -1,4 +1,4 @@
-package com.chess.model;
+package com.chess.model.chessClasses;
 
 import java.util.Arrays;
 import java.util.StringJoiner;

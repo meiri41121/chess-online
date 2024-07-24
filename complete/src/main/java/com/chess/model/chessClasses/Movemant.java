@@ -1,4 +1,4 @@
-package com.chess.model;
+package com.chess.model.chessClasses;
 
 public class Movemant extends Move {
 

@@ -1,10 +1,10 @@
 package com.chess.service;
 
-import com.chess.model.Game;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+
+import com.chess.model.chessClasses.Game;
 
 @Service
 public class ChessService {
@@ -21,13 +21,13 @@ public class ChessService {
 
     public void StartGame(Model model, String name, int difficulty){
         Game game = new Game(difficulty);
-        long gameId = ds.addNewGame(name, difficulty, game);
+        String gameId = ds.addNewGame(name, difficulty, game);
 		model.addAttribute("turn", game.getTurn());
 		model.addAttribute("gameId", gameId);
 		addBoardAttribute(model, game);
     }
 
-    public String move(Model model, long gameId, String move) {
+    public String move(Model model, String gameId, String move) {
         Game game = ds.loadGame(gameId);
         String s = game.play(move);
         if("undo".equals(s)){
@@ -54,13 +54,13 @@ public class ChessService {
 		return "chess";
     }
 
-    String end(Model model, long gameId, Game game){
+    String end(Model model, String gameId, Game game){
         Boolean win = ds.checkMat(gameId, !game.getCol());
         model.addAttribute("winMassage", win?"congratulation!! you are the winner!": "you loose");
         return "endGame";
     }
 
-    public String newPawn(Model model, long gameId, String newPawn) {
+    public String newPawn(Model model, String gameId, String newPawn) {
         Game game = ds.loadGame(gameId);
         if(game.getMoves().get(0).getChange()=='P')
             return null;

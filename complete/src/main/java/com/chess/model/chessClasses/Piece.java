@@ -1,4 +1,4 @@
-package com.chess.model;
+package com.chess.model.chessClasses;
 
 enum Player{PAWN, KNIGHT, BISHOF, ROOK, QUEEN, KING};
 enum color{WHITE, BLACK};

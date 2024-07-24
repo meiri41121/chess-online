@@ -1,15 +1,13 @@
-package com.chess.model;
+package com.chess.model.storageEntity;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name="GAME")
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document(collection = "Game")
 public class StorageGame {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private long id;
-    public long getId() {
+    private String id;
+    public String getId() {
       return id;
     }
     private String name;

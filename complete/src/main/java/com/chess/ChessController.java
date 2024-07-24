@@ -27,13 +27,13 @@ public class ChessController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/chess")
-	public String chessMove(@RequestParam(name="move") String move, @RequestParam(name="gameId") long gameId, Model model) {
+	public String chessMove(@RequestParam(name="move") String move, @RequestParam(name="gameId") String gameId, Model model) {
 		System.out.println(move);
 		return cs.move(model, gameId, move);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/newPawn")
-	public String pawnChange(@RequestParam(name="newPawn") String newPawn, @RequestParam(name="gameId") long gameId, Model model) {
+	public String pawnChange(@RequestParam(name="newPawn") String newPawn, @RequestParam(name="gameId") String gameId, Model model) {
 		System.out.println(newPawn);
 		return cs.newPawn(model, gameId, newPawn);
 	}

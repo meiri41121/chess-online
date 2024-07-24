@@ -1,16 +1,17 @@
-package com.chess.model;
-import javax.persistence.*;
+package com.chess.model.storageEntity;
 
-@Entity
-@Table(name = "MOVE")
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Document(collection = "Move")
 public class StorageMove {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private long id;
+    private String id;
 
-    private long gameId;
-    @Column(name="i")
+    private String gameId;
+    @Field("i")
     private int index;
     private int sourceX;
     private int sourceY;
@@ -18,7 +19,7 @@ public class StorageMove {
     private int targetY;
     private char became;
 
-    public StorageMove(int sourceX, int sourceY, int targetX, int targetY, Long gameId, int index, char became)
+    public StorageMove(int sourceX, int sourceY, int targetX, int targetY, String gameId, int index, char became)
     {
         this.sourceX = sourceX;
         this.sourceY = sourceY;
@@ -29,19 +30,19 @@ public class StorageMove {
         this.became = became;
     }
 
-    public StorageMove(int sourceX, int sourceY, int targetX, int targetY, long gameId, int index)
+    public StorageMove(int sourceX, int sourceY, int targetX, int targetY, String gameId, int index)
     {
         this(sourceX,sourceY,targetX,targetY,gameId,index,'P');
     }
 
     public StorageMove(){}
 
-    public long getId(){ return id; }
+    public String getId(){ return id; }
     public int getSourceX(){ return sourceX; }
     public int getSourceY(){ return sourceY; }
     public int getTargetX(){ return targetX; }
     public int getTargetY(){ return targetY; }
-    public long getGameId(){ return gameId; }
+    public String getGameId(){ return gameId; }
     public int getIndex(){ return index; }
     public char getBecame(){ return became; }
 
