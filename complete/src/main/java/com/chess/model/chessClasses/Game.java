@@ -1,8 +1,4 @@
 package com.chess.model.chessClasses;
-import java.util.List;
-
-
-import java.util.ArrayList;
 import java.util.*;
 
 public class Game{
@@ -164,6 +160,19 @@ public class Game{
             flag = move(mov.charAt(3)-'a'+1, mov.charAt(4)-'1'+1, what(mov.charAt(0)), mov.charAt(1)-'a'+1, mov.charAt(2)-'1'+1);
         else if(mov.compareTo("undo")==0)
             if(moves.size()>1) {undo();undo();return "undo";}
+        return flag? "true":"false";
+    }
+
+    public String play2(String mov){
+        if(mov.compareTo("undo")==0){
+            if(moves.size()>1) {undo();undo();return "undo";}
+            else return "false";
+        }
+        char sourceX = mov.charAt(0);
+        char sourceY = mov.charAt(1);
+        char targetX = mov.charAt(4);
+        char targetY = mov.charAt(5);
+        boolean flag = move(targetX - 'A' + 1, Character.getNumericValue(targetY), sourceX - 'A' + 1, Character.getNumericValue(sourceY));
         return flag? "true":"false";
     }
     
@@ -354,34 +363,34 @@ public class Game{
 
     public String printPieceByPosition(int x,int y, int c)
     {
-        if(c==0) return " ";
+        if(c==0) return null;
         boolean co = c==1?false:true;
         String s="";
         for (Piece i : co?piecesB:piecesW)
             if(i.getPos().posX==x && i.getPos().posY==y)
                 switch (i.getName()) {
                     case PAWN:
-                        s = "p";
+                        s = co ? "/images/blackPawn.png" : "/images/whitePawn.png";
                         break;
                     case KNIGHT:
-                        s = "n";
+                        s = co ? "/images/blackKnight.png" : "/images/whiteKnight.png";
                         break;
                     case BISHOF:
-                        s = "b";
+                        s = co ? "/images/blackBishop.png" : "/images/whiteBishop.png";
                         break;
                     case ROOK:
-                        s = "r";
+                        s = co ? "/images/blackRock.png" : "/images/whiteRock.png";
                         break;
                     case QUEEN:
-                        s = "q";
+                        s = co ? "/images/blackQueen.png" : "/images/whiteQueen.png";
                         break;
                     case KING:
-                        s = "k";
+                        s = co ? "/images/blackKing.png" : "/images/whiteKing.png";
                         break;
                 }
         if(s=="")
             System.out.println("error\n");
-        s+=co?"d":"l";
+        //s+=co?"d":"l";
         return s;
     }
 

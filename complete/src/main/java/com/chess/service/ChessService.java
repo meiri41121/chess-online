@@ -12,6 +12,12 @@ public class ChessService {
     @Autowired
     private DataService ds;
 
+    // void addBoardAttribute(Model model, Game game)
+	// {
+	// 	for(int j=0;j<8;j++)
+	// 		for(int i=0;i<8;i++)
+	// 			model.addAttribute(((char)('A'+i))+""+(char)(j+'1'), game.printPieceByPosition(i+1,j+1,game.getB().getBoard()[j][i]));
+	// }
     void addBoardAttribute(Model model, Game game)
 	{
 		for(int j=0;j<8;j++)
@@ -52,6 +58,33 @@ public class ChessService {
 			model.addAttribute("answer", s);
 		addBoardAttribute(model, game);
 		return "chess";
+    }
+
+    public String move1(Model model, String gameId, String move) {
+        Game game = ds.loadGame(gameId);
+        String s = game.play2(move);
+        if("undo".equals(s)){
+            ds.updateUndo(gameId,game.getMoves().size());
+        }
+        model.addAttribute("gameId", gameId);
+		if("true".equals(s) && game.getMoves().get(0).getChange()!='P'){
+            ds.addMove(game.getMoves().get(0), gameId); 
+            return "change";
+        }
+		if("true".equals(s)){//the player play valid move
+            if(game.getMoves().get(0).getHazraha()) ds.addMove(game.getMoves().get(1), gameId);
+            ds.addMove(game.getMoves().get(0), gameId); 
+            if(game.checkMat()) return end(model,gameId,game);
+            model.addAttribute("pcMove", game.doBestMove());
+            if(game.getMoves().get(0).getHazraha()) ds.addMove(game.getMoves().get(1), gameId);
+            ds.addMove(game.getMoves().get(0), gameId); 
+            if(game.checkMat()) return end(model,gameId,game);
+        }
+		model.addAttribute("turn", game.getTurn());
+		if(!"true".equals(s) && !"false".equals(s) && !"undo".equals(s)) 
+			model.addAttribute("answer", s);
+		addBoardAttribute(model, game);
+		return "chess3";
     }
 
     String end(Model model, String gameId, Game game){
