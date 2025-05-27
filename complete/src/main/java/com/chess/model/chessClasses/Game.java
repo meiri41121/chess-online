@@ -9,7 +9,13 @@ public class Game{
     private List<Piece> piecesB = new ArrayList<Piece>();
     private List<Piece> eaten = new ArrayList<Piece>();
     private List<Movemant> moves = new ArrayList<Movemant>();
-    private List<Move> validMovesList = new ArrayList<Move>();
+    private List<Move> validMovesList = new ArrayList<Move>(); // This field is populated by allValidMoves()
+    
+    // Public getter for the validMovesList
+    public List<Move> getValidMovesList() {
+        return this.validMovesList;
+    }
+    
     private boolean col=false;
     private int index = 0;
     private int difficulty = 1;

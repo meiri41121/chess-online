@@ -6,11 +6,26 @@
         table, th, td {
           border: 1px solid black;
           border-collapse: collapse;
+          width: 50px; /* Added for better square appearance */
+          height: 50px; /* Added for better square appearance */
+          text-align: center; /* Center piece images */
+        }
+        img { /* Ensure images don't break cell layout */
+            max-width: 90%;
+            max-height: 90%;
+            display: block; /* Helps with centering */
+            margin: auto; /* Helps with centering */
+        }
+        .valid-move {
+            background-color: yellow !important;
+        }
+        .selected-piece {
+            border: 3px solid blue !important; /* Thicker border for selected piece */
         }
         </style>
 </head>
 <body>
-    <h3 th:text="${turn}"></h3>
+    <h3 id="turnIndicator" th:text="${turn}"></h3>
     <table >
         <tr>
             <th></th>
@@ -25,101 +40,220 @@
         </tr>
         <tr>
             <th>1</th>
-            <td th:text="${A1}"></td>
-            <td th:text="${B1}"></td>
-            <td th:text="${C1}"></td>
-            <td th:text="${D1}"></td>
-            <td th:text="${E1}"></td>
-            <td th:text="${F1}"></td>
-            <td th:text="${G1}"></td>
-            <td th:text="${H1}"></td>
+            <td data-square="A1"><img th:if="${A1 != null}" th:src="${A1}" alt="piece"/></td>
+            <td data-square="B1"><img th:if="${B1 != null}" th:src="${B1}" alt="piece"/></td>
+            <td data-square="C1"><img th:if="${C1 != null}" th:src="${C1}" alt="piece"/></td>
+            <td data-square="D1"><img th:if="${D1 != null}" th:src="${D1}" alt="piece"/></td>
+            <td data-square="E1"><img th:if="${E1 != null}" th:src="${E1}" alt="piece"/></td>
+            <td data-square="F1"><img th:if="${F1 != null}" th:src="${F1}" alt="piece"/></td>
+            <td data-square="G1"><img th:if="${G1 != null}" th:src="${G1}" alt="piece"/></td>
+            <td data-square="H1"><img th:if="${H1 != null}" th:src="${H1}" alt="piece"/></td>
         </tr>
         <tr>
             <th>2</th>
-            <td th:text="${A2}"></td>
-            <td th:text="${B2}"></td>
-            <td th:text="${C2}"></td>
-            <td th:text="${D2}"></td>
-            <td th:text="${E2}"></td>
-            <td th:text="${F2}"></td>
-            <td th:text="${G2}"></td>
-            <td th:text="${H2}"></td>
+            <td data-square="A2"><img th:if="${A2 != null}" th:src="${A2}" alt="piece"/></td>
+            <td data-square="B2"><img th:if="${B2 != null}" th:src="${B2}" alt="piece"/></td>
+            <td data-square="C2"><img th:if="${C2 != null}" th:src="${C2}" alt="piece"/></td>
+            <td data-square="D2"><img th:if="${D2 != null}" th:src="${D2}" alt="piece"/></td>
+            <td data-square="E2"><img th:if="${E2 != null}" th:src="${E2}" alt="piece"/></td>
+            <td data-square="F2"><img th:if="${F2 != null}" th:src="${F2}" alt="piece"/></td>
+            <td data-square="G2"><img th:if="${G2 != null}" th:src="${G2}" alt="piece"/></td>
+            <td data-square="H2"><img th:if="${H2 != null}" th:src="${H2}" alt="piece"/></td>
         </tr>
         <tr>
             <th>3</th>
-            <td th:text="${A3}"></td>
-            <td th:text="${B3}"></td>
-            <td th:text="${C3}"></td>
-            <td th:text="${D3}"></td>
-            <td th:text="${E3}"></td>
-            <td th:text="${F3}"></td>
-            <td th:text="${G3}"></td>
-            <td th:text="${H3}"></td>
+            <td data-square="A3"><img th:if="${A3 != null}" th:src="${A3}" alt="piece"/></td>
+            <td data-square="B3"><img th:if="${B3 != null}" th:src="${B3}" alt="piece"/></td>
+            <td data-square="C3"><img th:if="${C3 != null}" th:src="${C3}" alt="piece"/></td>
+            <td data-square="D3"><img th:if="${D3 != null}" th:src="${D3}" alt="piece"/></td>
+            <td data-square="E3"><img th:if="${E3 != null}" th:src="${E3}" alt="piece"/></td>
+            <td data-square="F3"><img th:if="${F3 != null}" th:src="${F3}" alt="piece"/></td>
+            <td data-square="G3"><img th:if="${G3 != null}" th:src="${G3}" alt="piece"/></td>
+            <td data-square="H3"><img th:if="${H3 != null}" th:src="${H3}" alt="piece"/></td>
         </tr>
         <tr>
             <th>4</th>
-            <td th:text="${A4}"></td>
-            <td th:text="${B4}"></td>
-            <td th:text="${C4}"></td>
-            <td th:text="${D4}"></td>
-            <td th:text="${E4}"></td>
-            <td th:text="${F4}"></td>
-            <td th:text="${G4}"></td>
-            <td th:text="${H4}"></td>
+            <td data-square="A4"><img th:if="${A4 != null}" th:src="${A4}" alt="piece"/></td>
+            <td data-square="B4"><img th:if="${B4 != null}" th:src="${B4}" alt="piece"/></td>
+            <td data-square="C4"><img th:if="${C4 != null}" th:src="${C4}" alt="piece"/></td>
+            <td data-square="D4"><img th:if="${D4 != null}" th:src="${D4}" alt="piece"/></td>
+            <td data-square="E4"><img th:if="${E4 != null}" th:src="${E4}" alt="piece"/></td>
+            <td data-square="F4"><img th:if="${F4 != null}" th:src="${F4}" alt="piece"/></td>
+            <td data-square="G4"><img th:if="${G4 != null}" th:src="${G4}" alt="piece"/></td>
+            <td data-square="H4"><img th:if="${H4 != null}" th:src="${H4}" alt="piece"/></td>
         </tr>
         <tr>
             <th>5</th>
-            <td th:text="${A5}"></td>
-            <td th:text="${B5}"></td>
-            <td th:text="${C5}"></td>
-            <td th:text="${D5}"></td>
-            <td th:text="${E5}"></td>
-            <td th:text="${F5}"></td>
-            <td th:text="${G5}"></td>
-            <td th:text="${H5}"></td>
+            <td data-square="A5"><img th:if="${A5 != null}" th:src="${A5}" alt="piece"/></td>
+            <td data-square="B5"><img th:if="${B5 != null}" th:src="${B5}" alt="piece"/></td>
+            <td data-square="C5"><img th:if="${C5 != null}" th:src="${C5}" alt="piece"/></td>
+            <td data-square="D5"><img th:if="${D5 != null}" th:src="${D5}" alt="piece"/></td>
+            <td data-square="E5"><img th:if="${E5 != null}" th:src="${E5}" alt="piece"/></td>
+            <td data-square="F5"><img th:if="${F5 != null}" th:src="${F5}" alt="piece"/></td>
+            <td data-square="G5"><img th:if="${G5 != null}" th:src="${G5}" alt="piece"/></td>
+            <td data-square="H5"><img th:if="${H5 != null}" th:src="${H5}" alt="piece"/></td>
         </tr>
         <tr>
             <th>6</th>
-            <td th:text="${A6}"></td>
-            <td th:text="${B6}"></td>
-            <td th:text="${C6}"></td>
-            <td th:text="${D6}"></td>
-            <td th:text="${E6}"></td>
-            <td th:text="${F6}"></td>
-            <td th:text="${G6}"></td>
-            <td th:text="${H6}"></td>
+            <td data-square="A6"><img th:if="${A6 != null}" th:src="${A6}" alt="piece"/></td>
+            <td data-square="B6"><img th:if="${B6 != null}" th:src="${B6}" alt="piece"/></td>
+            <td data-square="C6"><img th:if="${C6 != null}" th:src="${C6}" alt="piece"/></td>
+            <td data-square="D6"><img th:if="${D6 != null}" th:src="${D6}" alt="piece"/></td>
+            <td data-square="E6"><img th:if="${E6 != null}" th:src="${E6}" alt="piece"/></td>
+            <td data-square="F6"><img th:if="${F6 != null}" th:src="${F6}" alt="piece"/></td>
+            <td data-square="G6"><img th:if="${G6 != null}" th:src="${G6}" alt="piece"/></td>
+            <td data-square="H6"><img th:if="${H6 != null}" th:src="${H6}" alt="piece"/></td>
         </tr>
         <tr>
             <th>7</th>
-            <td th:text="${A7}"></td>
-            <td th:text="${B7}"></td>
-            <td th:text="${C7}"></td>
-            <td th:text="${D7}"></td>
-            <td th:text="${E7}"></td>
-            <td th:text="${F7}"></td>
-            <td th:text="${G7}"></td>
-            <td th:text="${H7}"></td>
+            <td data-square="A7"><img th:if="${A7 != null}" th:src="${A7}" alt="piece"/></td>
+            <td data-square="B7"><img th:if="${B7 != null}" th:src="${B7}" alt="piece"/></td>
+            <td data-square="C7"><img th:if="${C7 != null}" th:src="${C7}" alt="piece"/></td>
+            <td data-square="D7"><img th:if="${D7 != null}" th:src="${D7}" alt="piece"/></td>
+            <td data-square="E7"><img th:if="${E7 != null}" th:src="${E7}" alt="piece"/></td>
+            <td data-square="F7"><img th:if="${F7 != null}" th:src="${F7}" alt="piece"/></td>
+            <td data-square="G7"><img th:if="${G7 != null}" th:src="${G7}" alt="piece"/></td>
+            <td data-square="H7"><img th:if="${H7 != null}" th:src="${H7}" alt="piece"/></td>
         </tr>
         <tr>
             <th>8</th>
-            <td th:text="${A8}"></td>
-            <td th:text="${B8}"></td>
-            <td th:text="${C8}"></td>
-            <td th:text="${D8}"></td>
-            <td th:text="${E8}"></td>
-            <td th:text="${F8}"></td>
-            <td th:text="${G8}"></td>
-            <td th:text="${H8}"></td>
+            <td data-square="A8"><img th:if="${A8 != null}" th:src="${A8}" alt="piece"/></td>
+            <td data-square="B8"><img th:if="${B8 != null}" th:src="${B8}" alt="piece"/></td>
+            <td data-square="C8"><img th:if="${C8 != null}" th:src="${C8}" alt="piece"/></td>
+            <td data-square="D8"><img th:if="${D8 != null}" th:src="${D8}" alt="piece"/></td>
+            <td data-square="E8"><img th:if="${E8 != null}" th:src="${E8}" alt="piece"/></td>
+            <td data-square="F8"><img th:if="${F8 != null}" th:src="${F8}" alt="piece"/></td>
+            <td data-square="G8"><img th:if="${G8 != null}" th:src="${G8}" alt="piece"/></td>
+            <td data-square="H8"><img th:if="${H8 != null}" th:src="${H8}" alt="piece"/></td>
         </tr>
     </table>
     <form action="/chess" method="post" enctype="application/x-www-form-urlencoded">
         <label>your move:</label>
-        <input type="text"  id="move" name="move"/><br><br>
+        <input type="text"  id="moveInput" name="move"/><br><br> <!-- Changed id to moveInput -->
         <input type="submit" value="Submit" />
         <input type="hidden" id="gameId" name="gameId" th:value="${gameId}">
     </form>
     <p th:text="${pcMove}"></p>
     <p th:text="${answer}"></p>
+
+    <script>
+        let selectedPieceSquare = null; // Stores algebraic notation like "E2"
+        let highlightedSquares = []; // Stores algebraic notations of highlighted squares
+        const gameId = document.getElementById('gameId').value;
+        const turnIndicator = document.getElementById('turnIndicator');
+        const boardCells = document.querySelectorAll('td[data-square]');
+        const moveInput = document.getElementById('moveInput');
+        const chessForm = document.querySelector('form[action="/chess"]');
+
+        function clearHighlights() {
+            highlightedSquares.forEach(squareNotation => {
+                const cell = document.querySelector(`td[data-square="${squareNotation}"]`);
+                if (cell) {
+                    cell.classList.remove('valid-move');
+                }
+            });
+            highlightedSquares = [];
+        }
+
+        function clearSelectedPieceStyle() {
+            const currentlySelected = document.querySelector('.selected-piece');
+            if (currentlySelected) {
+                currentlySelected.classList.remove('selected-piece');
+            }
+        }
+
+        function applySelectedPieceStyle(squareElement) {
+            if (squareElement) {
+                squareElement.classList.add('selected-piece');
+            }
+        }
+
+        function getPieceImageSrc(squareElement) {
+            if (!squareElement) return null;
+            const imgElement = squareElement.querySelector('img');
+            return imgElement ? imgElement.getAttribute('src') : null;
+        }
+
+        function isMyPiece(pieceImageSrc) {
+            if (!pieceImageSrc) return false;
+            const turnText = turnIndicator.textContent;
+            const isWhiteTurn = turnText.includes('WHITE');
+            const isWhitePiece = pieceImageSrc.includes('white');
+            const isBlackPiece = pieceImageSrc.includes('black');
+            return (isWhiteTurn && isWhitePiece) || (!isWhiteTurn && isBlackPiece);
+        }
+
+        function fetchAndHighlightValidMoves(algebraicPosition) {
+            clearHighlights(); // Clear previous highlights before fetching new ones
+            fetch(`/validMoves?piecePosition=${algebraicPosition}&gameId=${gameId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(validMoves => {
+                    validMoves.forEach(moveSquare => {
+                        const targetCell = document.querySelector(`td[data-square="${moveSquare}"]`);
+                        if (targetCell) {
+                            targetCell.classList.add('valid-move');
+                            highlightedSquares.push(moveSquare); // Keep track of highlighted squares by notation
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error(`Error fetching valid moves for ${algebraicPosition}:`, error);
+                    selectedPieceSquare = null; // Deselect if fetch fails
+                    clearSelectedPieceStyle();
+                });
+        }
+
+        boardCells.forEach(cell => {
+            cell.addEventListener('click', function(event) {
+                const clickedSquareElement = event.currentTarget;
+                const clickedSquareAlgebraic = clickedSquareElement.dataset.square;
+
+                if (selectedPieceSquare) { // A piece is already selected
+                    if (clickedSquareElement.classList.contains('valid-move')) {
+                        // **EXECUTE MOVE**
+                        const moveString = `${selectedPieceSquare}-${clickedSquareAlgebraic}`;
+                        moveInput.value = moveString;
+                        chessForm.submit();
+                        // Page reloads, so no need to clear state here, but good practice for AJAX:
+                        // clearHighlights();
+                        // clearSelectedPieceStyle();
+                        // selectedPieceSquare = null;
+                    } else {
+                        // Clicked a non-valid square. Is it another of my pieces?
+                        const pieceImageSrc = getPieceImageSrc(clickedSquareElement);
+                        
+                        clearHighlights(); // Always clear old highlights
+                        clearSelectedPieceStyle(); // Clear style from previously selected piece
+
+                        if (isMyPiece(pieceImageSrc)) {
+                            // **SWITCH SELECTION to this new piece**
+                            selectedPieceSquare = clickedSquareAlgebraic;
+                            applySelectedPieceStyle(clickedSquareElement);
+                            fetchAndHighlightValidMoves(selectedPieceSquare);
+                        } else {
+                            // Clicked an opponent's piece or empty square (not a valid move for current selection)
+                            selectedPieceSquare = null; // Deselect
+                        }
+                    }
+                } else { // No piece is currently selected
+                    // **ATTEMPT TO SELECT A PIECE**
+                    const pieceImageSrc = getPieceImageSrc(clickedSquareElement);
+                    if (isMyPiece(pieceImageSrc)) {
+                        clearSelectedPieceStyle(); // Clear if any residual style (should not happen)
+                        selectedPieceSquare = clickedSquareAlgebraic;
+                        applySelectedPieceStyle(clickedSquareElement);
+                        fetchAndHighlightValidMoves(selectedPieceSquare);
+                    }
+                    // Else, clicked opponent piece or empty square, do nothing.
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 

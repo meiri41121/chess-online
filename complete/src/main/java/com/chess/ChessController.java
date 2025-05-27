@@ -6,9 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMethod;
+import com.chess.service.ChessService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping; // Added
+import org.springframework.web.bind.annotation.ResponseBody; // Added
+import java.util.List; // Added
 
 @Controller
 public class ChessController {
@@ -57,6 +66,12 @@ public class ChessController {
     //     // Optionally return a view name or redirect
     //     return "chessBoard"; // This should match the name of your Thymeleaf template
     // }
+
+    @GetMapping("/validMoves")
+    @ResponseBody // Ensures the List<String> is returned as JSON
+    public List<String> getValidMovesForPiece(@RequestParam(name="piecePosition") String piecePosition, @RequestParam(name="gameId") String gameId) {
+        return cs.getValidMoves(piecePosition, gameId);
+    }
 
 }
 
