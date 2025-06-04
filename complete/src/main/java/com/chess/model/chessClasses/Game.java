@@ -370,27 +370,26 @@ public class Game{
             if(i.getPos().posX==x && i.getPos().posY==y)
                 switch (i.getName()) {
                     case PAWN:
-                        s = co ? "/images/blackPawn.png" : "/images/whitePawn.png";
+                        s = co ? "/images/chess/black-pawn.svg" : "/images/chess/white-pawn.svg";
                         break;
                     case KNIGHT:
-                        s = co ? "/images/blackKnight.png" : "/images/whiteKnight.png";
+                        s = co ? "/images/chess/black-knight.svg" : "/images/chess/white-knight.svg";
                         break;
                     case BISHOF:
-                        s = co ? "/images/blackBishop.png" : "/images/whiteBishop.png";
+                        s = co ? "/images/chess/black-bishop.svg" : "/images/chess/white-bishop.svg";
                         break;
                     case ROOK:
-                        s = co ? "/images/blackRock.png" : "/images/whiteRock.png";
+                        s = co ? "/images/chess/black-rook.svg" : "/images/chess/white-rook.svg";
                         break;
                     case QUEEN:
-                        s = co ? "/images/blackQueen.png" : "/images/whiteQueen.png";
+                        s = co ? "/images/chess/black-queen.svg" : "/images/chess/white-queen.svg";
                         break;
                     case KING:
-                        s = co ? "/images/blackKing.png" : "/images/whiteKing.png";
+                        s = co ? "/images/chess/black-king.svg" : "/images/chess/white-king.svg";
                         break;
                 }
         if(s=="")
             System.out.println("error\n");
-        //s+=co?"d":"l";
         return s;
     }
 
