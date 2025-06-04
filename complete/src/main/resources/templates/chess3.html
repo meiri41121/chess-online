@@ -4,7 +4,7 @@
     <title>Chess Game</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/chess.css(v=${#dates.createNow().getTime()})}" />
+    <link rel="stylesheet" th:href="@{/css/chess.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         .square button {
@@ -64,189 +64,54 @@
         
         <div class="board-container">
             <div class="chess-board">
-                <!-- Row 8 -->
-                <div class="square light"><button onclick="selectSquare('A8')"><img th:if="${A8 != null}" th:src="@{${A8}}" alt="A8_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('B8')"><img th:if="${B8 != null}" th:src="@{${B8}}" alt="B8_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('C8')"><img th:if="${C8 != null}" th:src="@{${C8}}" alt="C8_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('D8')"><img th:if="${D8 != null}" th:src="@{${D8}}" alt="D8_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('E8')"><img th:if="${E8 != null}" th:src="@{${E8}}" alt="E8_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('F8')"><img th:if="${F8 != null}" th:src="@{${F8}}" alt="F8_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('G8')"><img th:if="${G8 != null}" th:src="@{${G8}}" alt="G8_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('H8')"><img th:if="${H8 != null}" th:src="@{${H8}}" alt="H8_piece"/></button></div>
-                
-                <!-- Row 7 -->
-                <div class="square dark"><button onclick="selectSquare('A7')"><img th:if="${A7 != null}" th:src="@{${A7}}" alt="A7_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('B7')"><img th:if="${B7 != null}" th:src="@{${B7}}" alt="B7_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('C7')"><img th:if="${C7 != null}" th:src="@{${C7}}" alt="C7_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('D7')"><img th:if="${D7 != null}" th:src="@{${D7}}" alt="D7_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('E7')"><img th:if="${E7 != null}" th:src="@{${E7}}" alt="E7_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('F7')"><img th:if="${F7 != null}" th:src="@{${F7}}" alt="F7_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('G7')"><img th:if="${G7 != null}" th:src="@{${G7}}" alt="G7_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('H7')"><img th:if="${H7 != null}" th:src="@{${H7}}" alt="H7_piece"/></button></div>
-                
-                <!-- Row 6 -->
-                <div class="square light"><button onclick="selectSquare('A6')"><img th:if="${A6 != null}" th:src="@{${A6}}" alt="A6_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('B6')"><img th:if="${B6 != null}" th:src="@{${B6}}" alt="B6_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('C6')"><img th:if="${C6 != null}" th:src="@{${C6}}" alt="C6_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('D6')"><img th:if="${D6 != null}" th:src="@{${D6}}" alt="D6_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('E6')"><img th:if="${E6 != null}" th:src="@{${E6}}" alt="E6_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('F6')"><img th:if="${F6 != null}" th:src="@{${F6}}" alt="F6_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('G6')"><img th:if="${G6 != null}" th:src="@{${G6}}" alt="G6_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('H6')"><img th:if="${H6 != null}" th:src="@{${H6}}" alt="H6_piece"/></button></div>
-                
-                <!-- Row 5 -->
-                <div class="square dark"><button onclick="selectSquare('A5')"><img th:if="${A5 != null}" th:src="@{${A5}}" alt="A5_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('B5')"><img th:if="${B5 != null}" th:src="@{${B5}}" alt="B5_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('C5')"><img th:if="${C5 != null}" th:src="@{${C5}}" alt="C5_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('D5')"><img th:if="${D5 != null}" th:src="@{${D5}}" alt="D5_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('E5')"><img th:if="${E5 != null}" th:src="@{${E5}}" alt="E5_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('F5')"><img th:if="${F5 != null}" th:src="@{${F5}}" alt="F5_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('G5')"><img th:if="${G5 != null}" th:src="@{${G5}}" alt="G5_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('H5')"><img th:if="${H5 != null}" th:src="@{${H5}}" alt="H5_piece"/></button></div>
-                
-                <!-- Row 4 -->
-                <div class="square light"><button onclick="selectSquare('A4')"><img th:if="${A4 != null}" th:src="@{${A4}}" alt="A4_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('B4')"><img th:if="${B4 != null}" th:src="@{${B4}}" alt="B4_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('C4')"><img th:if="${C4 != null}" th:src="@{${C4}}" alt="C4_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('D4')"><img th:if="${D4 != null}" th:src="@{${D4}}" alt="D4_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('E4')"><img th:if="${E4 != null}" th:src="@{${E4}}" alt="E4_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('F4')"><img th:if="${F4 != null}" th:src="@{${F4}}" alt="F4_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('G4')"><img th:if="${G4 != null}" th:src="@{${G4}}" alt="G4_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('H4')"><img th:if="${H4 != null}" th:src="@{${H4}}" alt="H4_piece"/></button></div>
-                
-                <!-- Row 3 -->
-                <div class="square dark"><button onclick="selectSquare('A3')"><img th:if="${A3 != null}" th:src="@{${A3}}" alt="A3_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('B3')"><img th:if="${B3 != null}" th:src="@{${B3}}" alt="B3_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('C3')"><img th:if="${C3 != null}" th:src="@{${C3}}" alt="C3_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('D3')"><img th:if="${D3 != null}" th:src="@{${D3}}" alt="D3_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('E3')"><img th:if="${E3 != null}" th:src="@{${E3}}" alt="E3_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('F3')"><img th:if="${F3 != null}" th:src="@{${F3}}" alt="F3_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('G3')"><img th:if="${G3 != null}" th:src="@{${G3}}" alt="G3_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('H3')"><img th:if="${H3 != null}" th:src="@{${H3}}" alt="H3_piece"/></button></div>
-                
-                <!-- Row 2 -->
-                <div class="square light"><button onclick="selectSquare('A2')"><img th:if="${A2 != null}" th:src="@{${A2}}" alt="A2_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('B2')"><img th:if="${B2 != null}" th:src="@{${B2}}" alt="B2_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('C2')"><img th:if="${C2 != null}" th:src="@{${C2}}" alt="C2_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('D2')"><img th:if="${D2 != null}" th:src="@{${D2}}" alt="D2_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('E2')"><img th:if="${E2 != null}" th:src="@{${E2}}" alt="E2_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('F2')"><img th:if="${F2 != null}" th:src="@{${F2}}" alt="F2_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('G2')"><img th:if="${G2 != null}" th:src="@{${G2}}" alt="G2_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('H2')"><img th:if="${H2 != null}" th:src="@{${H2}}" alt="H2_piece"/></button></div>
-                
-                <!-- Row 1 -->
-                <div class="square dark"><button onclick="selectSquare('A1')"><img th:if="${A1 != null}" th:src="@{${A1}}" alt="A1_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('B1')"><img th:if="${B1 != null}" th:src="@{${B1}}" alt="B1_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('C1')"><img th:if="${C1 != null}" th:src="@{${C1}}" alt="C1_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('D1')"><img th:if="${D1 != null}" th:src="@{${D1}}" alt="D1_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('E1')"><img th:if="${E1 != null}" th:src="@{${E1}}" alt="E1_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('F1')"><img th:if="${F1 != null}" th:src="@{${F1}}" alt="F1_piece"/></button></div>
-                <div class="square dark"><button onclick="selectSquare('G1')"><img th:if="${G1 != null}" th:src="@{${G1}}" alt="G1_piece"/></button></div>
-                <div class="square light"><button onclick="selectSquare('H1')"><img th:if="${H1 != null}" th:src="@{${H1}}" alt="H1_piece"/></button></div>
+                <div th:each="row: ${#numbers.sequence(8, 1, -1)}" class="board-row">
+                    <div th:each="col: ${#numbers.sequence(1, 8)}" 
+                         th:with="squareId=${T(Character).toString(T(Character).toChars(64 + col)[0]) + row}"
+                         th:id="${squareId}"
+                         th:class="'square ' + (${(row + col) % 2 == 0 ? 'light' : 'dark'})">
+                        <button type="button">
+                            <img th:if="${__${squareId}__} != null"
+                                 th:src="@{${__${squareId}__}}"
+                                 th:alt="${squareId}"/>
+                        </button>
+                    </div>
+                </div>
             </div>
             
             <!-- Board coordinates -->
-            <div class="coordinates file-coord">A</div>
-            <div class="coordinates file-coord">B</div>
-            <div class="coordinates file-coord">C</div>
-            <div class="coordinates file-coord">D</div>
-            <div class="coordinates file-coord">E</div>
-            <div class="coordinates file-coord">F</div>
-            <div class="coordinates file-coord">G</div>
-            <div class="coordinates file-coord">H</div>
-            
-            <div class="coordinates rank-coord">8</div>
-            <div class="coordinates rank-coord">7</div>
-            <div class="coordinates rank-coord">6</div>
-            <div class="coordinates rank-coord">5</div>
-            <div class="coordinates rank-coord">4</div>
-            <div class="coordinates rank-coord">3</div>
-            <div class="coordinates rank-coord">2</div>
-            <div class="coordinates rank-coord">1</div>
+            <div class="coordinates">
+                <div class="file-coords">
+                    <span th:each="col: ${#numbers.sequence(1, 8)}" 
+                          th:text="${T(Character).toString(T(Character).toChars(64 + col)[0])}">
+                    </span>
+                </div>
+                <div class="rank-coords">
+                    <span th:each="row: ${#numbers.sequence(8, 1, -1)}" 
+                          th:text="${row}">
+                    </span>
+                </div>
+            </div>
         </div>
 
         <div class="controls">
             <form id="moveForm" action="/chess" method="post" style="display: none;">
                 <input type="hidden" id="move" name="move"/>
-                <input type="hidden" id="gameId" name="gameId" th:value="${gameId}">
+                <input type="hidden" id="gameId" name="gameId" th:value="${gameId}"/>
             </form>
-            <button class="undo-button" onclick="undoMove()">
-                <i class="fas fa-arrow-left"></i> Undo Move
-            </button>
+            <form action="/undo" method="post" class="undo-form">
+                <input type="hidden" name="gameId" th:value="${gameId}"/>
+                <button type="submit" class="undo-button">
+                    <i class="fas fa-arrow-left"></i> Undo Move
+                </button>
+            </form>
         </div>
 
         <div class="game-status">
             <p th:if="${pcMove}" th:text="'Computer moved: ' + ${pcMove}"></p>
-            <p th:if="${answer}" th:text="${answer}"></p>
+            <p th:if="${answer}" th:text="${answer}" class="error-message"></p>
         </div>
     </div>
 
-    <script>
-        let selectedSquare = null;
-        let isPlayerTurn = true;
-        let lastSelectedButton = null;
-
-        function selectSquare(square) {
-            if (!isPlayerTurn) {
-                console.log("Wait for the opponent's move.");
-                return;
-            }
-
-            const currentButton = document.querySelector(`button[onclick="selectSquare('${square}')"]`);
-            
-            if (lastSelectedButton) {
-                lastSelectedButton.closest('.square').style.backgroundColor = '';
-            }
-
-            if (!selectedSquare) {
-                selectedSquare = square;
-                lastSelectedButton = currentButton;
-                currentButton.closest('.square').style.backgroundColor = 'var(--highlight)';
-            } else {
-                if (selectedSquare === square) {
-                    selectedSquare = null;
-                    lastSelectedButton = null;
-                    return;
-                }
-
-                const move = selectedSquare + "->" + square;
-                movePiece(selectedSquare, square);
-                isPlayerTurn = false;
-
-                setTimeout(() => {
-                    document.getElementById('move').value = move;
-                    document.getElementById('moveForm').submit();
-                }, 500);
-                
-                selectedSquare = null;
-                lastSelectedButton = null;
-            }
-        }
-
-        function movePiece(from, to) {
-            const fromButton = document.querySelector(`button[onclick="selectSquare('${from}')"]`);
-            const toButton = document.querySelector(`button[onclick="selectSquare('${to}')"]`);
-
-            const fromElement = fromButton.querySelector('img');
-            let toElement = toButton.querySelector('img');
-
-            if (!toElement) {
-                toElement = document.createElement('img');
-                toButton.appendChild(toElement);
-            }
-
-            if (fromElement) {
-                toElement.src = fromElement.src;
-                fromButton.removeChild(fromElement);
-            } else {
-                console.error("Invalid move: source square does not have a piece.");
-            }
-        }
-
-        function undoMove() {
-            document.getElementById('move').value = 'undo';
-            document.getElementById('moveForm').submit();
-        }
-    </script>
+    <script src="/js/chess.js"></script>
 </body>
 </html>

@@ -5,6 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.chess.model.chessClasses.Game;
+import com.chess.model.chessClasses.Piece;
+import com.chess.model.chessClasses.Pos;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ChessService {
@@ -112,5 +117,17 @@ public class ChessService {
             return "chess";
         }
         return "change";   
+    }
+
+    public void change(String gameId, String newPawn) {
+        Game game = ds.loadGame(gameId);
+        game.change(newPawn);
+    }
+
+    public List<String> getValidMovesForPiece(String gameId, String pos) {
+        Game game = ds.loadGame(gameId);
+        List<String> validMoves = new ArrayList<>();
+        game.getValidMovesForPosition(pos.charAt(0) - 'A' + 1, Character.getNumericValue(pos.charAt(1)), validMoves);
+        return validMoves;
     }
 }

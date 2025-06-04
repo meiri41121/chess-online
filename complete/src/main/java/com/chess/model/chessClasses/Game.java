@@ -433,4 +433,42 @@ public class Game{
                 {value += p.become(what(newPawn.charAt(0))); break;}
     }
 
+    public boolean isValidMove(Piece p, Pos target) {
+        boolean flagP=false, flag=false;
+        if(!moves.isEmpty())
+            if(p.getName()==Player.PAWN && moves.get(0).getFM() && moves.get(0).getTarget().posY==(p.getCol()?4:5) && moves.get(0).getSource().posY==(p.getCol()?2:7) && new Pos(moves.get(0).getTarget().posX,(p.getCol()?3:6))==target && Math.abs(p.getPos().posX-target.posX)==1 && p.getPos().posY==(p.getCol()?4:5))
+                {b.setVal(target.posX, target.posY, col?1:2); flagP=true;}
+        if(p.validMove(b, target))
+        {
+            if(p.getName()==Player.KING && Math.abs(p.getPos().posX-target.posX) == 2){//hatzraha
+                if(!(underthreat(p.getPos().posX,p.getPos().posY, col) || underthreat(target.posX,target.posY, col) || underthreat((target.posX+p.getPos().posX)/2,target.posY, col)))
+                    for(Piece r : col?piecesB:piecesW)
+                        if(r.getName()==Player.ROOK && r.getInit() && (r.getPos().posX==target.posX+1 || r.getPos().posX==target.posX-2))
+                            return true;
+                return false;}
+            if(!b.empty(target.posX, target.posY))//eating
+                for(Piece die : col?piecesW:piecesB)
+                    if(die.getPos().posX==target.posX && (die.getPos().posY==target.posY || (flagP && die.getPos().posY==(getCol()?4:5))))
+                        return true;
+            return true;
+        }
+        return false;
+    }
+
+    public void getValidMovesForPosition(int sourceX, int sourceY, List<String> validMoves) {
+        updateCol();
+        for(Piece p : col ? piecesB : piecesW) {
+            if(p.getPos().posX == sourceX && p.getPos().posY == sourceY) {
+                for(int i = 1; i <= 8; i++) {
+                    for(int j = 1; j <= 8; j++) {
+                        if(validMove(p, new Pos(i, j))) {
+                            validMoves.add(String.format("%c%d", (char)('A' + i - 1), j));
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    }
+
 }

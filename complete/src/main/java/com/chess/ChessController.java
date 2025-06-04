@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class ChessController {
@@ -33,9 +36,16 @@ public class ChessController {
 		return cs.move1(model, gameId, move);
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value = "/validMoves")
+	@ResponseBody
+	public List<String> getValidMoves(@RequestParam(name="pos") String pos, @RequestParam(name="gameId") String gameId) {
+		return cs.getValidMovesForPiece(gameId, pos);
+	}
+
 	@RequestMapping(method = RequestMethod.POST, value = "/newPawn")
 	public String pawnChange(@RequestParam(name="newPawn") String newPawn, @RequestParam(name="gameId") String gameId, Model model) {
 		System.out.println(newPawn);
+		cs.change(gameId, newPawn);
 		return cs.newPawn(model, gameId, newPawn);
 	}
 
