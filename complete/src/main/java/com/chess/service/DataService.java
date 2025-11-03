@@ -1,6 +1,7 @@
 package com.chess.service;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.chess.model.chessClasses.Game;
 import com.chess.model.chessClasses.Movemant;
@@ -30,6 +31,7 @@ public class DataService {
     }
 
     public Game loadGame(String gameId){
+        gameId = Objects.requireNonNull(gameId, "gameId must not be null");
         List<StorageMove> moves = mr.findByGameIdOrderByIndex(gameId);
         StorageGame sg = gr.findById(gameId).get();
         Game game = new Game(sg.getDifficulty());
@@ -50,6 +52,7 @@ public class DataService {
     }
 
     public Boolean checkMat(String gameId, Boolean winner){
+        gameId = Objects.requireNonNull(gameId, "gameId must not be null");
         StorageGame sg= gr.findById(gameId).get();
         sg.setEnd(true);
         sg.setWin(sg.getCol()==winner? true:false);
