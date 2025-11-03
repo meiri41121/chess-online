@@ -434,7 +434,7 @@ public class Game{
     }
 
     public boolean isValidMove(Piece p, Pos target) {
-        boolean flagP=false, flag=false;
+        boolean flagP=false;
         if(!moves.isEmpty())
             if(p.getName()==Player.PAWN && moves.get(0).getFM() && moves.get(0).getTarget().posY==(p.getCol()?4:5) && moves.get(0).getSource().posY==(p.getCol()?2:7) && new Pos(moves.get(0).getTarget().posX,(p.getCol()?3:6))==target && Math.abs(p.getPos().posX-target.posX)==1 && p.getPos().posY==(p.getCol()?4:5))
                 {b.setVal(target.posX, target.posY, col?1:2); flagP=true;}

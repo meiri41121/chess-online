@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.chess.model.chessClasses.Game;
-import com.chess.model.chessClasses.Piece;
-import com.chess.model.chessClasses.Pos;
 
 import java.util.ArrayList;
 import java.util.List;
