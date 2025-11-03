@@ -49,24 +49,10 @@ public class ChessController {
 		return cs.newPawn(model, gameId, newPawn);
 	}
 
-	// @PostMapping("/undo")
-    // public String undoMove(Model model) {
-	// 	System.out.println("undo");
-	// 	return cs.move1(model, gameId, move);
-    //     boolean success = chessService.undoLastMove(); // Call the service method to undo the move
-
-    //     if (!success) {
-    //         return "Error"; // Handle the case where undo fails (e.g., no moves to undo)
-    //     }
-
-    //     // Add attributes to the model to update the view
-    //     model.addAttribute("A1", chessService.getPieceAt("A1"));
-    //     model.addAttribute("B1", chessService.getPieceAt("B1"));
-    //     // Continue for all other squares...
-
-    //     // Optionally return a view name or redirect
-    //     return "chessBoard"; // This should match the name of your Thymeleaf template
-    // }
+	@PostMapping("/undo")
+	public String undoMove(@RequestParam(name="gameId") String gameId, Model model) {
+		return cs.move1(model, gameId, "undo");
+	}
 
 }
 
